@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وصلني - إدارة رحلاتي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        :root {
+            --dark-navy: #0f172a;
+            --soft-blue: #3b82f6;
+            --bg-light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            color: var(--dark-navy);
+        }
+
+        body {
+            visibility: hidden;
+        }
+
+        /* هيدر ناعم بدون ميل حاد */
+        .page-header {
+            background: var(--dark-navy);
+            color: white;
+            padding: 50px 0 90px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            position: relative;
+        }
+
+        /* زر الخروج الشيك */
+        .exit-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .exit-btn:hover {
+            background: #ef4444;
+            transform: rotate(90deg);
+            color: white;
+        }
+
+        /* ستايل الكروت الجديد - Ultra Clean */
+        .trip-manage-card {
+            background: white;
+            border-radius: 28px;
+            border: none;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+            position: relative;
+        }
+
+        .trip-manage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        /* عرض المدن */
+        .route-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .city-name {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--dark-navy);
+        }
+
+        .route-arrow {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+        }
+
+        /* تفاصيل بسيطة */
+        .trip-specs {
+            display: flex;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .spec-item i {
+            color: var(--soft-blue);
+        }
+
+        /* الأزرار الهادية */
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-base {
+            flex: 1;
+            border: none;
+            padding: 12px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .btn-del {
+            background: #fff1f2;
+            color: #e11d48;
+        }
+
+        .btn-del:hover {
+            background: #e11d48;
+            color: white;
+        }
+
+        .btn-edit {
+            background: #f0f9ff;
+            color: #0369a1;
+        }
+
+        .btn-edit:hover {
+            background: #0369a1;
+            color: white;
+        }
+
+        /* زر الإضافة العائم */
+        .fab-add {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--soft-blue);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .fab-add:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="page-header">
+        <a href="index.html" class="exit-btn"><i class="fas fa-times"></i></a>
+        <h1 class="fw-900 mb-1">رحلاتي</h1>
+        <p class="opacity-50">إدارة الرحلات التي قمت بنشرها</p>
+    </header>
+
+    <div class="container" style="margin-top: -45px;">
+        <div id="myTripsList" class="row">
+        </div>
+    </div>
+
+    <a href="add-trip.html" class="fab-add">
+        <i class="fas fa-plus me-2"></i> إضافة رحلة جديدة
+    </a>
+
+ <script src="./script/my-trips.js"></script>
+</body>
+
+</html>

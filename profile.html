@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وصلني - حسابي الشخصي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-blue: #3b82f6;
+            --dark-navy: #0f172a;
+            --soft-bg: #f8fafc;
+            --text-main: #1e293b;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--soft-bg);
+            margin: 0;
+            color: var(--text-main);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--dark-navy) !important;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تنسيق اللوجو الأساسي */
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: white !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            /* سرعة الحركة */
+        }
+
+        /* حركة الأيقونة (الطائرة الورقية) */
+        .logo-text i {
+            color: var(--primary-blue);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* حركة مرنة */
+        }
+
+        /* الأنميشن عند الوقوف بالماوس (Hover) */
+        .logo-text:hover {
+            color: var(--primary-blue) !important;
+            /* تغيير لون النص */
+            transform: scale(1.05);
+            /* تكبير الكلمة بالكامل بنسبة بسيطة */
+        }
+
+        .logo-text:hover i {
+            transform: translateX(-5px) translateY(-5px) rotate(-10deg);
+            /* الطائرة تطير قليلاً للأعلى واليسار */
+            color: white;
+            /* تغيير لون الأيقونة */
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background: var(--dark-navy);
+            color: white;
+            padding: 60px 0 160px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%);
+        }
+
+        .profile-header h2 {
+            font-weight: 900;
+            font-size: 2rem;
+        }
+
+        /* User Card */
+        .user-info-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            margin-top: -120px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-avatar {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, var(--primary-blue), #2563eb);
+            color: white;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            margin: -90px auto 20px;
+            border: 6px solid white;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        .stats-box {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-edit-profile {
+            background: var(--dark-navy);
+            color: white;
+            border-radius: 15px;
+            padding: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+            border: none;
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .btn-edit-profile:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Trips List */
+        .section-container {
+            margin-top: 50px;
+        }
+
+        .section-title h5 {
+            font-weight: 900;
+            color: var(--dark-navy);
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .section-title h5::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            bottom: 20%;
+            width: 4px;
+            background: var(--primary-blue);
+            border-radius: 10px;
+        }
+
+        .btn-manage {
+            background: white;
+            color: var(--primary-blue);
+            padding: 8px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1.5px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .btn-manage:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .mini-trip-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #edf2f7;
+            transition: 0.3s;
+        }
+
+        .mini-trip-item:hover {
+            transform: scale(1.01) translateX(-5px);
+            border-right: 5px solid var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .route-text {
+            font-weight: 800;
+            color: var(--dark-navy);
+            font-size: 1.05rem;
+        }
+
+        .date-badge {
+            font-size: 0.75rem;
+            color: #64748b;
+            background: #f8fafc;
+            padding: 4px 10px;
+            border-radius: 8px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .weight-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-blue);
+            font-weight: 800;
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="logo-text" href="index.html">
+                <i class="fas fa-paper-plane"></i>
+                <span>وصلني</span>
+            </a>
+        </div>
+    </nav>
+
+    <header class="profile-header">
+        <div class="container">
+            <h2>الملف الشخصي</h2>
+            <p class="opacity-75">أهلاً بك مجدداً في حسابك</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="user-info-card">
+                    <div class="user-avatar"><i class="fas fa-user-tie"></i></div>
+                    <h4 class="fw-900 mb-1">أحمد محمد</h4>
+                    <p class="text-muted small">مسافر موثق <i class="fas fa-check-circle text-primary ms-1"></i></p>
+
+                    <div class="stats-box d-flex justify-content-around">
+                        <div>
+                            <h5 class="fw-900 mb-0" id="tripsCount">0</h5>
+                            <small class="text-muted">رحلاتي</small>
+                        </div>
+                        <div style="width: 1px; background: #cbd5e1;"></div>
+                        <div>
+                            <h5 class="fw-900 mb-0">4.9</h5>
+                            <small class="text-muted">التقييم</small>
+                        </div>
+                    </div>
+
+                    <button class="btn-edit-profile">
+                        <i class="fas fa-user-edit me-2"></i> تعديل الملف
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-7 section-container">
+                <div class="section-title d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0">آخر رحلاتي المضافة</h5>
+                    <a href="my-trips.html" class="btn-manage">إدارة الكل</a>
+                </div>
+
+                <div id="miniList">
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="./script/profile.js"></script>
+</body>
+
+</html>
