@@ -40,16 +40,16 @@
 
         .auth-info {
             background-color: var(--dark-navy) !important;
-            background-image: url('waslni.webp'); 
+            background-image: url('waslni.webp');
             background-repeat: no-repeat;
             background-position: center 35%;
-            background-size: 280px; 
+            background-size: 280px;
             color: white;
             padding: 40px;
             width: 40%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; 
+            justify-content: flex-end;
             align-items: center;
             position: relative;
             text-align: center;
@@ -121,10 +121,51 @@
             cursor: pointer;
         }
 
+        /* --- التعديلات الجديدة للموبايل هنا --- */
         @media (max-width: 992px) {
-            .auth-wrapper { flex-direction: column; max-width: 500px; }
-            .auth-info { width: 100%; min-height: 300px; background-size: 200px; }
-            .auth-form-container { width: 100%; padding: 40px; }
+            .auth-wrapper {
+                flex-direction: column;
+                max-width: 450px;
+                border-radius: 25px;
+                /* تنعيم الحواف للموبايل */
+            }
+
+            .auth-info {
+                width: 100%;
+                min-height: 220px;
+                /* تقليل الارتفاع عشان مياخدش الشاشة كلها */
+                background-size: 150px;
+                /* تصغير اللوجو */
+                background-position: center 20px;
+                /* رفع اللوجو لفوق */
+                padding: 20px;
+                justify-content: center;
+                /* توسيط النص */
+            }
+
+            .auth-info p {
+                margin-top: 80px;
+                /* إبعاد النص عن اللوجو */
+                margin-bottom: 0;
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .auth-form-container {
+                width: 100%;
+                padding: 30px 20px;
+                /* تقليل الحواف الجانبية */
+            }
+
+            #formTitle {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            #formSub {
+                text-align: center;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -170,6 +211,7 @@
             </form>
         </div>
     </div>
-<script src="./script/login.js"></script>
+    <script src="./script/login.js"></script>
 </body>
+
 </html>
